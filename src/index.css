@@ -122,3 +122,10 @@ footer.starCount {
   text-shadow: none;
   margin: 5px;
 }
+.remove-cart-btn{
+  
+  background-color: red;
+  color: #fff;
+  margin: 5px;
+
+}

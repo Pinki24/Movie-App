@@ -6,8 +6,9 @@ class MovieCard extends Component{
             title:"The Avengers",
             plot:"Supernatural powers shown in the movie.",
             price:199,
-            rating:8.9,
-            stars:0
+            rating:8.9,stars:0,
+            fav:false,
+            cart:false
         }
         //second way of binding(inside the constructor)
     // this.addStars=this.addStars.bind(this);
@@ -54,9 +55,19 @@ class MovieCard extends Component{
         // this.state.stars+=0.5;
         // console.log("this.state.stars:",this.state.states);
     } 
+    handlefav=()=>{
+        this.setState({
+            fav:!this.state.fav
+        })
+    }
+    handlecart=()=>{
+        this.setState({
+            cart:!this.state.cart
+        })
+    }
     render(){
             // here also we can destructing
-            const {title,plot,price,stars}=this.state;
+            const {title,plot,price,stars,fav,cart}=this.state;
             return(
                 <div className="main">
                     <div className="movie-card">
@@ -91,8 +102,17 @@ class MovieCard extends Component{
                                     
                                 
                                 </div>
-                                <button className="favourite-btn">Favourite</button>
-                                <button className="cart-btn">Add to cart</button>
+                                {fav?
+                                 <button className="unfavourite-btn" onClick={this.handlefav}>Un-Favourite</button>:
+                                <button className="favourite-btn" onClick={this.handlefav}>Favourite</button>
+                                }
+                                
+                                {/* <button className="unfavourite-btn">Un-Favourite</button> */}
+                                {cart?
+                                   
+                                <button className="remove-cart-btn" onClick={this.handlecart}>Remove to cart</button>:
+                                <button className="cart-btn" onClick={this.handlecart}>Add to cart</button>
+                                }
                             </div>
 
                         </div>
